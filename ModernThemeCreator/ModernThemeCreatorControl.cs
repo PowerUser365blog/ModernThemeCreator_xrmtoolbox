@@ -99,19 +99,22 @@ namespace ModernThemeCreator
             {
                 string webresourceName = colorSetting.GetAttributeValue<string>("value");
                 Models.AppHeaderColors appHeaderColors = GetXml(webresourceName);
-                DataGridViewRow row = new DataGridViewRow();
-                row.CreateCells(dataGridView1);
-                row.Cells[dataGridView1.Columns["webresourceId"].Index].Value = appHeaderColors.id;
-                row.Cells[dataGridView1.Columns["appId"].Index].Value = colorSetting.GetAttributeValue<Guid>("appid").ToString();
-                row.Cells[dataGridView1.Columns["background"].Index].Value = appHeaderColors.background;
-                row.Cells[dataGridView1.Columns["foreground"].Index].Value = appHeaderColors.foreground;
-                row.Cells[dataGridView1.Columns["backgroundHover"].Index].Value = appHeaderColors.backgroundHover;
-                row.Cells[dataGridView1.Columns["foregroundHover"].Index].Value = appHeaderColors.foregroundHover;
-                row.Cells[dataGridView1.Columns["backgroundPressed"].Index].Value = appHeaderColors.backgroundPressed;
-                row.Cells[dataGridView1.Columns["foregroundPressed"].Index].Value = appHeaderColors.foregroundPressed;
-                row.Cells[dataGridView1.Columns["backgroundSelected"].Index].Value = appHeaderColors.backgroundSelected;
-                row.Cells[dataGridView1.Columns["foregroundSelected"].Index].Value = appHeaderColors.foregroundSelected;
-                dataGridView1.Invoke(new Action(() => dataGridView1.Rows.Add(row)));
+                if (appHeaderColors != null)
+                {
+                    DataGridViewRow row = new DataGridViewRow();
+                    row.CreateCells(dataGridView1);
+                    row.Cells[dataGridView1.Columns["webresourceId"].Index].Value = appHeaderColors.id;
+                    row.Cells[dataGridView1.Columns["appId"].Index].Value = colorSetting.GetAttributeValue<Guid>("appid").ToString();
+                    row.Cells[dataGridView1.Columns["background"].Index].Value = appHeaderColors.background;
+                    row.Cells[dataGridView1.Columns["foreground"].Index].Value = appHeaderColors.foreground;
+                    row.Cells[dataGridView1.Columns["backgroundHover"].Index].Value = appHeaderColors.backgroundHover;
+                    row.Cells[dataGridView1.Columns["foregroundHover"].Index].Value = appHeaderColors.foregroundHover;
+                    row.Cells[dataGridView1.Columns["backgroundPressed"].Index].Value = appHeaderColors.backgroundPressed;
+                    row.Cells[dataGridView1.Columns["foregroundPressed"].Index].Value = appHeaderColors.foregroundPressed;
+                    row.Cells[dataGridView1.Columns["backgroundSelected"].Index].Value = appHeaderColors.backgroundSelected;
+                    row.Cells[dataGridView1.Columns["foregroundSelected"].Index].Value = appHeaderColors.foregroundSelected;
+                    dataGridView1.Invoke(new Action(() => dataGridView1.Rows.Add(row)));
+                }
             };
         }
 
@@ -174,15 +177,20 @@ namespace ModernThemeCreator
             }
             catch (Exception ex) { MessageBox.Show(ex.Message); }
 
-
-            content = webResources.Entities[0].GetAttributeValue<string>("content");
-            byte[] data = Convert.FromBase64String(content);
-            content = System.Text.Encoding.UTF8.GetString(data);
-            XmlSerializer serializer = new XmlSerializer(typeof(Models.AppHeaderColors));
-            appHeaderColors = serializer.Deserialize(new System.IO.StringReader(content)) as Models.AppHeaderColors;
-            appHeaderColors.id = webResources.Entities[0].Id.ToString();
-
-            return appHeaderColors;
+            if (webResources.Entities.Count > 0)
+            {
+                content = webResources.Entities[0].GetAttributeValue<string>("content");
+                byte[] data = Convert.FromBase64String(content);
+                content = System.Text.Encoding.UTF8.GetString(data);
+                XmlSerializer serializer = new XmlSerializer(typeof(Models.AppHeaderColors));
+                appHeaderColors = serializer.Deserialize(new System.IO.StringReader(content)) as Models.AppHeaderColors;
+                appHeaderColors.id = webResources.Entities[0].Id.ToString();
+                return appHeaderColors;
+            }
+            else
+            {
+                return null;
+            }
 
         }
 
