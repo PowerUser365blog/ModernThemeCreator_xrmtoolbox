@@ -4,6 +4,8 @@ using Microsoft.Xrm.Sdk;
 using Microsoft.Xrm.Sdk.Client;
 using Microsoft.Xrm.Sdk.Messages;
 using Microsoft.Xrm.Sdk.Query;
+using Microsoft.Xrm.Tooling.Connector;
+using ModernThemeCreator.Helpers;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -12,19 +14,21 @@ using System.Drawing;
 using System.Linq;
 using System.Reflection;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Web.Services.Description;
 using System.Windows.Forms;
 using System.Xml;
 using System.Xml.Serialization;
 using XrmToolBox.Extensibility;
+using XrmToolBox.Extensibility.Args;
 
 namespace ModernThemeCreator
 {
     public partial class ModernThemeCreatorControl : PluginControlBase
     {
         private Settings ModernThemeSettings;
-
+        private ListViewItem[] listViewClassicThemes;
         public ModernThemeCreatorControl()
         {
             InitializeComponent();
@@ -44,7 +48,8 @@ namespace ModernThemeCreator
             ExecuteMethod(LoadSettings);
         }
         private List<Entity> data;
-        private void LoadSettings() {
+        private void LoadSettings()
+        {
             WorkAsync(new WorkAsyncInfo
             {
                 Message = "Searching",
@@ -80,7 +85,8 @@ namespace ModernThemeCreator
                 entity["appid"] = setting.GetAttributeValue<EntityReference>("parentappmoduleid").Id;
                 entity["value"] = setting.GetAttributeValue<string>("value");
                 colorSettings.Entities.Add(entity);
-            };
+            }
+            ;
             foreach (var orgSetting in orgSettings.Entities)
             {
                 Entity entity = new Entity("combinedsetting");
@@ -89,7 +95,8 @@ namespace ModernThemeCreator
                 entity["value"] = orgSetting.GetAttributeValue<string>("value");
                 colorSettings.Entities.Add(entity);
 
-            };
+            }
+            ;
             return colorSettings.Entities.ToList();
 
         }
@@ -115,7 +122,8 @@ namespace ModernThemeCreator
                     row.Cells[dataGridView1.Columns["foregroundSelected"].Index].Value = appHeaderColors.foregroundSelected;
                     dataGridView1.Invoke(new Action(() => dataGridView1.Rows.Add(row)));
                 }
-            };
+            }
+            ;
         }
 
         private Guid GetSettingId(string appSettingName)
@@ -199,40 +207,6 @@ namespace ModernThemeCreator
             CloseTool();
         }
 
-        //private void tsbSample_Click(object sender, EventArgs e)
-        //{
-        //    // The ExecuteMethod method handles connecting to an
-        //    // organization if XrmToolBox is not yet connected
-        //    ExecuteMethod(GetAccounts);
-        //}
-
-        //private void GetAccounts()
-        //{
-        //    WorkAsync(new WorkAsyncInfo
-        //    {
-        //        Message = "Getting accounts",
-        //        Work = (worker, args) =>
-        //        {
-        //            args.Result = Service.RetrieveMultiple(new QueryExpression("account")
-        //            {
-        //                TopCount = 50
-        //            });
-        //        },
-        //        PostWorkCallBack = (args) =>
-        //        {
-        //            if (args.Error != null)
-        //            {
-        //                MessageBox.Show(args.Error.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        //            }
-        //            var result = args.Result as EntityCollection;
-        //            if (result != null)
-        //            {
-        //                MessageBox.Show($"Found {result.Entities.Count} accounts");
-        //            }
-        //        }
-        //    });
-        //}
-
         /// <summary>
         /// This event occurs when the plugin is closed
         /// </summary>
@@ -280,11 +254,8 @@ namespace ModernThemeCreator
             txtForegroundPressed.BackColor = Color.White;
             txtBackgroundSelected.BackColor = Color.White;
             txtForegroundSelected.BackColor = Color.White;
-            btnUpdate.Hide();
-            btnSaveNew.Show();
-            lblWait.Hide();
-            lblProgress.Hide();
-            progressBar.Hide();
+            btn_editTheme.Enabled = false;
+            btn_saveNew.Enabled = true;
         }
 
         private string ColorToHex(Color color)
@@ -309,7 +280,7 @@ namespace ModernThemeCreator
                 txtBackground.Text = ColorToHex(colorDialog1.Color);
             }
         }
- 
+
         private void colorPicker2_Click(object sender, EventArgs e)
         {
             if (colorDialog1.ShowDialog() == DialogResult.OK)
@@ -447,90 +418,108 @@ namespace ModernThemeCreator
             //comprueba si la fila seleccionada
             if (dataGridView1.SelectedRows.Count > 0)
             {
-                btnUpdate.Show();
-                btnSaveNew.Hide();
-                lblWait.Hide();
-                lblProgress.Hide();
-                progressBar.Hide();
+                btn_editTheme.Enabled = true;
+                btn_saveNew.Enabled = false;
             }
             else
             {
-                btnUpdate.Hide();
-                btnSaveNew.Show();
+                btn_editTheme.Enabled = false;
+                btn_saveNew.Enabled = true;
+            }
+        }
+
+        private bool IsValidHexColor(string hex)
+        {
+            return hex.Length == 7 && hex.StartsWith("#") &&
+                   Regex.IsMatch(hex.Substring(1), "^[0-9A-Fa-f]{6}$");
+        }
+
+        private bool IsHexColor()
+        {
+            if (IsValidHexColor(txtBackground.Text) || 
+                IsValidHexColor(txtForeground.Text) || 
+                IsValidHexColor(txtBackgroundHover.Text) ||
+                IsValidHexColor(txtForegroundHover.Text) ||
+                IsValidHexColor(txtBackgroundPressed.Text) ||
+                IsValidHexColor(txtForegroundPressed.Text) ||
+                IsValidHexColor(txtBackgroundSelected.Text) ||
+                IsValidHexColor(txtForegroundSelected.Text)
+                )
+            {
+
+                return true;
+            }
+            else
+            {
+                MessageBox.Show("One or more selected colors are invalid. Please check and try again.");
+                return false;
             }
         }
 
         private void btnSaveNew_Click(object sender, EventArgs e)
         {
 
-                Form2 form2 = new Form2();
-                string webResourceName = string.Empty;
-                string appId = txtApp.Text;
-                string appUniqueName = string.Empty;
+            Form2 form2 = new Form2();
+            string webResourceName = string.Empty;
+            string appId = txtApp.Text;
+            string appUniqueName = string.Empty;
+            if (!IsHexColor())
+            {
+                return;
+            }
             if (form2.ShowDialog() == DialogResult.OK)
+            {
+                webResourceName = form2.webResourceName;
+                CheckEmptyColor();
+                XmlDocument xmlTheme = createXlm();
+                Guid webResourceId = ExecuteCreateThemeWebResource(xmlTheme, webResourceName);
+                if (appId != string.Empty)
                 {
-                    webResourceName = form2.webResourceName;
-                    CheckEmptyColor();
-                    XmlDocument xmlTheme = createXlm();
-                    Guid webResourceId = ExecuteCreateThemeWebResource(xmlTheme, webResourceName);
-                    if (appId != string.Empty)
-                    {
-                        appUniqueName = GetAppUniqueName(appId);
-                    }
-                    PublishWebresource(appUniqueName, webResourceName);
-                    progressBar.Show();
-                    lblProgress.Show();
-                    lblWait.Show();
-                    btnSaveNew.Hide();
-                    backgroundWorker.RunWorkerAsync(appId);
-                    this.dataGridView1.Rows.Clear();
-            }
-            
-        }
-        private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
-        {
-            string appId = e.Argument as string;
-            for (int i = 0; i <= 50; i++)
-            {
-                System.Threading.Thread.Sleep(50);
-                backgroundWorker.ReportProgress(i);
-            }
-            if (appId != string.Empty)
-            {
-                PublishApp(appId).Wait();
-            }
-            for (int i = 51; i <= 100; i++)
-            {
-                System.Threading.Thread.Sleep(50);
-                backgroundWorker.ReportProgress(i);
+                    appUniqueName = GetAppUniqueName(appId);
+                }
+                PublishWebresource(appUniqueName, webResourceName);
+                btn_saveNew.Enabled = false;
+                if(appId != string.Empty) 
+                {
+                    PublishAppWithWorkAsync(appId);
+                }
+                this.dataGridView1.Rows.Clear();
+                LoadSettings();
             }
 
-            this.Invoke(new Action(() => LoadSettings()));
         }
-        private void backgroundWorker1_ProgressChanged(object sender, ProgressChangedEventArgs e)
+
+        public void PublishAppWithWorkAsync(string appId)
         {
-            progressBar.Invoke(new Action(() => progressBar.Value = e.ProgressPercentage));
-            lblProgress.Invoke(new Action(() => lblProgress.Text = $"{e.ProgressPercentage}%"));
-            if (e.ProgressPercentage == 100)
+            WorkAsync(new WorkAsyncInfo
             {
-                lblWait.Text = "Theme published..!";
-            }
-        }
-        private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
-        {
-            if (e.Error != null)
-            {
-                MessageBox.Show("Error: " + e.Error.Message);
-            }
-            else if (e.Cancelled)
-            {
-                MessageBox.Show("Operation Cancelled.");
-            }
-            else
-            {
-                MessageBox.Show("Operation Completed.");
-                dataGridView1.ClearSelection();
-            }
+                Message = "Publishing the app...",
+                Work = async (worker, args) =>
+                {
+                    try
+                    {
+                        await PublishApp(appId);
+                        args.Result = "App published successfully.";
+                    }
+                    catch (Exception ex)
+                    {
+                        args.Result = ex;
+                        args.Cancel = true;
+                    }
+                },
+                PostWorkCallBack = (args) =>
+                {
+                    if (args.Error != null)
+                    {
+                        var ex = args.Result as Exception;
+                        MessageBox.Show($"Error publishing the app: {ex?.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else
+                    {
+                        MessageBox.Show(args.Result.ToString(), "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+            });
         }
         public async Task PublishApp(string appId)
         {
@@ -605,42 +594,223 @@ namespace ModernThemeCreator
         }
         private void txtBackground_TextChanged(object sender, EventArgs e)
         {
-            txtBackground.BackColor = ColorTranslator.FromHtml(txtBackground.Text);
+            if (txtBackground.Text.Length == 7 && txtBackground.Text.StartsWith("#"))
+            {
+                txtBackground.BackColor = ColorTranslator.FromHtml(txtBackground.Text);
+            }
         }
 
         private void txtForeground_TextChanged(object sender, EventArgs e)
         {
-            txtForeground.BackColor = ColorTranslator.FromHtml(txtForeground.Text);
+            if (txtForeground.Text.Length == 7 && txtForeground.Text.StartsWith("#"))
+            {
+                txtForeground.BackColor = ColorTranslator.FromHtml(txtForeground.Text);
+            }
         }
 
         private void txtBackgroundHover_TextChanged(object sender, EventArgs e)
         {
-            txtBackgroundHover.BackColor = ColorTranslator.FromHtml(txtBackgroundHover.Text);
+            if (txtBackgroundHover.Text.Length == 7 && txtBackgroundHover.Text.StartsWith("#"))
+            {
+                txtBackgroundHover.BackColor = ColorTranslator.FromHtml(txtBackgroundHover.Text);
+            }
         }
 
         private void txtForegroundHover_TextChanged(object sender, EventArgs e)
         {
-            txtForegroundHover.BackColor = ColorTranslator.FromHtml(txtForegroundHover.Text);
+            if (txtForegroundHover.Text.Length == 7 && txtForegroundHover.Text.StartsWith("#"))
+            {
+                txtForegroundHover.BackColor = ColorTranslator.FromHtml(txtForegroundHover.Text);
+            }
         }
 
         private void txtBackgroundPressed_TextChanged(object sender, EventArgs e)
         {
-            txtBackgroundPressed.BackColor = ColorTranslator.FromHtml(txtBackgroundPressed.Text);
+            if (txtBackgroundPressed.Text.Length == 7 && txtBackgroundPressed.Text.StartsWith("#"))
+            {
+                txtBackgroundPressed.BackColor = ColorTranslator.FromHtml(txtBackgroundPressed.Text);
+            }
         }
 
         private void txtForegroundPressed_TextChanged(object sender, EventArgs e)
         {
-            txtForegroundPressed.BackColor = ColorTranslator.FromHtml(txtForegroundPressed.Text);
+            if (txtForegroundPressed.Text.Length == 7 && txtForegroundPressed.Text.StartsWith("#"))
+            {
+                txtForegroundPressed.BackColor = ColorTranslator.FromHtml(txtForegroundPressed.Text);
+            }
         }
 
         private void txtBackgroundSelected_TextChanged(object sender, EventArgs e)
         {
-            txtBackgroundSelected.BackColor = ColorTranslator.FromHtml(txtBackgroundSelected.Text);
+            if (txtBackgroundSelected.Text.Length == 7 && txtBackgroundSelected.Text.StartsWith("#"))
+            {
+                txtBackgroundSelected.BackColor = ColorTranslator.FromHtml(txtBackgroundSelected.Text);
+            }
         }
 
         private void txtForegroundSelected_TextChanged(object sender, EventArgs e)
         {
-            txtForegroundSelected.BackColor = ColorTranslator.FromHtml(txtForegroundSelected.Text);
+            if (txtForegroundSelected.Text.Length == 7 && txtForegroundSelected.Text.StartsWith("#"))
+            {
+                txtForegroundSelected.BackColor = ColorTranslator.FromHtml(txtForegroundSelected.Text);
+            }
         }
+
+        private void UploadImg_Click(object sender, EventArgs e)
+        {
+            Form1 form1 = new Form1();
+            if (form1.ShowDialog() == DialogResult.OK)
+            {
+                Entity webResource = form1.webResourceLogo;
+                Entity themeClassic = new Entity("theme");
+
+                Guid logoId = new Guid();
+                Guid themeClassicId = new Guid();
+                try
+                {
+                    logoId = Service.Create(webResource);
+                }
+                catch
+                {
+                    MessageBox.Show("Web Resource creation error");
+                }
+
+                txtbox_imgId.Text = logoId.ToString();
+                themeClassic["name"] = webResource["name"];
+                themeClassic["maincolor"] = "#3B79B7";
+                themeClassic["headercolor"] = "#D83B00";
+                themeClassic["accentcolor"] = "#E83D0F";
+                themeClassic["backgroundcolor"] = "#FFFFFF";
+                themeClassic["controlborder"] = "#BDC3C7";
+                themeClassic["controlshade"] = "#FFFFFF";
+                themeClassic["defaultcustomentitycolor"] = "#00CCA3";
+                themeClassic["defaultentitycolor"] = "#666666";
+                themeClassic["globallinkcolor"] = "#9C2900";
+                themeClassic["hoverlinkeffect"] = "#F7D7CC";
+                themeClassic["navbarbackgroundcolor"] = "#0078D7";
+                themeClassic["navbarshelfcolor"] = "#FFFFFF";
+                themeClassic["pageheaderbackgroundcolor"] = "#E0E0E0";
+                themeClassic["panelheaderbackgroundcolor"] = "#F3F3F3";
+                themeClassic["processcontrolcolor"] = "#358717";
+                themeClassic["selectedlinkeffect"] = "#F8FAFC";
+                themeClassic["logoid"] = new EntityReference("webresource", logoId);
+                try
+                {
+                    themeClassicId = Service.Create(themeClassic);
+                }
+                catch
+                {
+                    MessageBox.Show("Error in imgage creation");
+                }
+                PublishThemeRequest publishThemeRequest = new PublishThemeRequest();
+                publishThemeRequest.Target = new EntityReference("theme", themeClassicId);
+                WorkAsync(new WorkAsyncInfo
+                {
+                    Message = "Uploading and publishing the Web Resource...",
+                    Work = (bw, eArgs) =>
+                    {
+                        try
+                        {
+
+                            // Publicar el Web Resource usando su nombre
+                            string publishXml = $@"
+                                <importexportxml>
+                                    <webresources>
+                                        <webresource>{logoId}</webresource>
+                                    </webresources>
+                                </importexportxml>";
+
+                            var publishRequest = new PublishXmlRequest
+                            {
+                                ParameterXml = publishXml
+                            };
+
+                            Service.Execute(publishRequest);
+                            Service.Execute(publishThemeRequest);
+                        }
+                        catch (Exception ex)
+                        {
+                            eArgs.Result = ex;
+                        }
+                    },
+                    PostWorkCallBack = eArgs =>
+                    {
+                        if (eArgs.Result is Exception ex)
+                        {
+                            MessageBox.Show("Error uploading or publishing:" + ex.Message);
+                        }
+                        else
+                        {
+                            MessageBox.Show("Web Resource created and published successfully.");
+                        }
+                    },
+                    AsyncArgument = null,
+                    MessageWidth = 340 // Opcional: ancho del diálogo de progreso
+                });
+            }
+        }
+
+        private void btn_selectImg_Click(object sender, EventArgs e)
+        {
+            WorkAsync(new WorkAsyncInfo
+            {
+                Message = "Loading classic themes...",
+                Work = (worker, args) =>
+                {
+                    try
+                    {
+                        args.Result = new GetClassicTheme().RetrieveThemes(Service, "theme", worker);
+                    }
+                    catch (Exception ex)
+                    {
+                        args.Result = ex;
+                    }
+                },
+                PostWorkCallBack = args =>
+                {
+                    if (args.Result is Exception ex)
+                    {
+                        MessageBox.Show("Error loading classic themes: " + ex.Message);
+                        return;
+                    }
+
+                    var classicThemes = args.Result as EntityCollection;
+                    if (classicThemes == null || !classicThemes.Entities.Any())
+                    {
+                        MessageBox.Show("No classic themes found.");
+                        return;
+                    }
+
+                    Guid logoId = Guid.Empty;
+                    bool isDefault = false;
+
+                    using (Form3 form3 = new Form3(classicThemes))
+                    {
+                        if (form3.ShowDialog() == DialogResult.OK)
+                        {
+                            logoId = form3.imageId;
+                            isDefault = form3.isDefault;
+                        }
+                    }
+
+                    if (!isDefault && logoId != Guid.Empty)
+                    {
+                        PublishThemeRequest request = new PublishThemeRequest();
+                        request.Target = new EntityReference("theme", logoId);
+                        try
+                        {
+                            Service.Execute(request);
+                        }
+                        catch (Exception execEx)
+                        {
+                            MessageBox.Show("Error publishing theme: " + execEx.Message);
+                        }
+                    }
+
+                    txtbox_imgId.Text = logoId.ToString();
+                }
+            });
+        }
+
     }
 }
