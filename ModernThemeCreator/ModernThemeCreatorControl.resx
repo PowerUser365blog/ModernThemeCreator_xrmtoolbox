@@ -121,16 +121,6 @@
     <value>13, 14</value>
   </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="toolStripButton1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAADQSURBVDhP1ZExCsJAEEXHBD3BMuZPOsu0W+YcFnoctbGw
-        sBZBwWPlBhE7a2WihmXMklj64cOy899nhyWKKxWRLYAVEY3ssE8KX0Tk8faBiBIbiikFcA7gxlmWHYeU
-        JF3w0BKFTxayjpaIyN6GYwawszwx85SZZwC8BQLQa0azlm8FwFkwKHA2/6U/LMjzfB4OiqKYiMjdwnrn
-        vR9/csooq9+nzWXb+BouAVTMfFPrGcDCZEplOwuGqC1wzl0BrPWPf/RGROrmuVrSsXOfa13rCUeTk45X
-        5e8IAAAAAElFTkSuQmCC
-</value>
-  </data>
   <data name="btn_newTheme.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
@@ -161,6 +151,15 @@
         k4eIMrArcfLhZ3MQ8mAg7H87m80hsDR2QFfirAfre+Bg8xFb4AW8SxyV1fVreT6b80Pd0FKoXMz7MrdQ
         Ca/vhSsXBtzMjb75qPBR3sSjsuecwpb8v7AH7sF1azSTM7nw6MOAU0thKBipnwpG6qeCkfqpYKS+/xym
         Rns2XlZRqU5rifYsiA/N04Nc6D+8HAAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="colorPicker9.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAANJJREFUOE+d
+        0jFKQ1EQheEPDBIIaVO4ANuAG7BM4wokgksQBJs0ghvIMpIVhNhEXJlMuAk3c+XxXopT3Hnn/5mBZ/H2
+        ZEiwxAYfuGkKXcEKnxjh9SjJpf+CeYFX1Swkm6acg3VZ+ZDmscmyAVJpgl/c4h1fZX7epoGSYIYfbCvJ
+        4eKUDCX4G/d4rCRxzrxTUMPlHZLYJM5ZX3R7wvGO+aTp94Uz2Aiugc8CjLEbCteCFzwPhUvfFHvchaRs
+        0gs+CR7KzxGS2GScS105WUIyzR/75A+f4chsmjiR+QAAAABJRU5ErkJggg==
 </value>
   </data>
   <data name="colorPicker8.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
@@ -238,6 +237,18 @@
   <metadata name="appId.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
+  <metadata name="basePaletteColor.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="vibrancy.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="hueTorsion.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="font.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <metadata name="background.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
@@ -266,6 +277,18 @@
     <value>True</value>
   </metadata>
   <metadata name="appId.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="basePaletteColor.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="vibrancy.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="hueTorsion.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="font.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <metadata name="background.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
@@ -304,14 +327,4 @@
   <metadata name="openFileDialog1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>444, 15</value>
   </metadata>
-  <data name="btn_selectImg.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAADRSURBVDhPrZOxCQJBEEUfmKglqB1YgWhkog3Yg5mYGIsY
-        mNmEkaFag4WcBdiByoddGeZ27w7xw8Ay9/+7meUO/qgWsAfOiVp7c0pz4J0I30N/6wNei2D0in3VwT+0
-        agKohDQFqGbeJOUAXvLIW1JTwBIY+qZUB+gCk1A6l1QFGAMPcwc6j7wpB9DbFLgAPaAPXIEC6FhjDqCR
-        1VcwahB6muyrXwBT00t+yhuzgsYWROEb8PQr6GfaOcAJaIcL087xEhV+ASsLqJPepp01ts4KHz9TJUP/
-        q79UvgAAAABJRU5ErkJggg==
-</value>
-  </data>
 </root>
