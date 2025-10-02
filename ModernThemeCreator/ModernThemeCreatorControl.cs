@@ -275,92 +275,32 @@ namespace ModernThemeCreator
         {
             return $"#{color.R:X2}{color.G:X2}{color.B:X2}";
         }
-        private void CheckEmptyColor()
-        {
-            if(txtBasePaletteColor.Text== string.Empty) { txtBasePaletteColor.Text = "#FFFFFF"; }
-            if (txtBackground.Text == string.Empty) { txtBackground.Text = "#FFFFFF"; }
-            if (txtForeground.Text == string.Empty) { txtForeground.Text = "#FFFFFF"; }
-            if (txtBackgroundHover.Text == string.Empty) { txtBackgroundHover.Text = "#FFFFFF"; }
-            if (txtForegroundHover.Text == string.Empty) { txtForegroundHover.Text = "#FFFFFF"; }
-            if (txtBackgroundPressed.Text == string.Empty) { txtBackgroundPressed.Text = "#FFFFFF"; }
-            if (txtForegroundPressed.Text == string.Empty) { txtForegroundPressed.Text = "#FFFFFF"; }
-            if (txtBackgroundSelected.Text == string.Empty) { txtBackgroundSelected.Text = "#FFFFFF"; }
-            if (txtForegroundSelected.Text == string.Empty) { txtForegroundSelected.Text = "#FFFFFF"; }
-        }
-        private void colorPicker1_Click(object sender, EventArgs e)
-        {
-            if (colorDialog1.ShowDialog() == DialogResult.OK)
-            {
-                txtBackground.Text = ColorToHex(colorDialog1.Color);
-            }
-        }
-
-        private void colorPicker2_Click(object sender, EventArgs e)
+        //private void CheckEmptyColor()
+        //{
+        //    if(txtBasePaletteColor.Text== string.Empty) { txtBasePaletteColor.Text = "#FFFFFF"; }
+        //    if (txtBackground.Text == string.Empty) { txtBackground.Text = "#FFFFFF"; }
+        //    if (txtForeground.Text == string.Empty) { txtForeground.Text = "#FFFFFF"; }
+        //    if (txtBackgroundHover.Text == string.Empty) { txtBackgroundHover.Text = "#FFFFFF"; }
+        //    if (txtForegroundHover.Text == string.Empty) { txtForegroundHover.Text = "#FFFFFF"; }
+        //    if (txtBackgroundPressed.Text == string.Empty) { txtBackgroundPressed.Text = "#FFFFFF"; }
+        //    if (txtForegroundPressed.Text == string.Empty) { txtForegroundPressed.Text = "#FFFFFF"; }
+        //    if (txtBackgroundSelected.Text == string.Empty) { txtBackgroundSelected.Text = "#FFFFFF"; }
+        //    if (txtForegroundSelected.Text == string.Empty) { txtForegroundSelected.Text = "#FFFFFF"; }
+        //}
+        private void ColorPicker_Click(object sender, EventArgs e)
         {
             if (colorDialog1.ShowDialog() == DialogResult.OK)
             {
-                txtForeground.Text = ColorToHex(colorDialog1.Color);
-            }
-        }
-
-        private void colorPicker3_Click(object sender, EventArgs e)
-        {
-            if (colorDialog1.ShowDialog() == DialogResult.OK)
-            {
-                txtBackgroundHover.Text = ColorToHex(colorDialog1.Color);
-            }
-        }
-
-        private void colorPicker4_Click(object sender, EventArgs e)
-        {
-            if (colorDialog1.ShowDialog() == DialogResult.OK)
-            {
-                txtForegroundHover.Text = ColorToHex(colorDialog1.Color);
-            }
-        }
-
-        private void colorPicker5_Click(object sender, EventArgs e)
-        {
-            if (colorDialog1.ShowDialog() == DialogResult.OK)
-            {
-                txtBackgroundPressed.Text = ColorToHex(colorDialog1.Color);
-            }
-        }
-
-        private void colorPicker6_Click(object sender, EventArgs e)
-        {
-            if (colorDialog1.ShowDialog() == DialogResult.OK)
-            {
-                txtForegroundPressed.Text = ColorToHex(colorDialog1.Color);
-            }
-        }
-
-        private void colorPicker7_Click(object sender, EventArgs e)
-        {
-            if (colorDialog1.ShowDialog() == DialogResult.OK)
-            {
-                txtBackgroundSelected.Text = ColorToHex(colorDialog1.Color);
-            }
-        }
-
-        private void colorPicker8_Click(object sender, EventArgs e)
-        {
-            if (colorDialog1.ShowDialog() == DialogResult.OK)
-            {
-                txtForegroundSelected.Text = ColorToHex(colorDialog1.Color);
-            }
-        }
-        private void colorPicker9_Click(object sender, EventArgs e)
-        {
-            if (colorDialog1.ShowDialog() == DialogResult.OK)
-            {
-                txtBasePaletteColor.Text = ColorToHex(colorDialog1.Color);
+                if (sender is Button btn && btn.Tag is TextBox targetTextBox)
+                {
+                    targetTextBox.Text = ColorToHex(colorDialog1.Color);
+                }
             }
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            CheckEmptyColor();
+            //CheckEmptyColor();
             XmlDocument xmlTheme = createXlm();
             UpdateWebresource(Service, txtName.Text, xmlTheme);
             MessageBox.Show("Theme updated..!");
@@ -375,16 +315,26 @@ namespace ModernThemeCreator
             customTheme.SetAttribute("vibrancy", txtVibrancy.Text);
             customTheme.SetAttribute("hueTorsion", txtHueTorsion.Text);
             customTheme.SetAttribute("font", txtFont.Text);
-            XmlElement appHeaderColors = xmlTheme.CreateElement("AppHeaderColors");
-            appHeaderColors.SetAttribute("background", txtBackground.Text);
-            appHeaderColors.SetAttribute("foreground", txtForeground.Text);
-            appHeaderColors.SetAttribute("backgroundHover", txtBackgroundHover.Text);
-            appHeaderColors.SetAttribute("foregroundHover", txtForegroundHover.Text);
-            appHeaderColors.SetAttribute("backgroundPressed", txtBackgroundPressed.Text);
-            appHeaderColors.SetAttribute("foregroundPressed", txtForegroundPressed.Text);
-            appHeaderColors.SetAttribute("backgroundSelected", txtBackgroundSelected.Text);
-            appHeaderColors.SetAttribute("foregroundSelected", txtForegroundSelected.Text);
-            customTheme.AppendChild(appHeaderColors);
+            if (!string.IsNullOrWhiteSpace(txtBackground.Text) ||
+                !string.IsNullOrWhiteSpace(txtForeground.Text) ||
+                !string.IsNullOrWhiteSpace(txtBackgroundHover.Text) ||
+                !string.IsNullOrWhiteSpace(txtForegroundHover.Text) ||
+                !string.IsNullOrWhiteSpace(txtBackgroundPressed.Text) ||
+                !string.IsNullOrWhiteSpace(txtForegroundPressed.Text) ||
+                !string.IsNullOrWhiteSpace(txtBackgroundSelected.Text) ||
+                !string.IsNullOrWhiteSpace(txtForegroundSelected.Text))
+            {
+                XmlElement appHeaderColors = xmlTheme.CreateElement("AppHeaderColors");
+                appHeaderColors.SetAttribute("background", txtBackground.Text);
+                appHeaderColors.SetAttribute("foreground", txtForeground.Text);
+                appHeaderColors.SetAttribute("backgroundHover", txtBackgroundHover.Text);
+                appHeaderColors.SetAttribute("foregroundHover", txtForegroundHover.Text);
+                appHeaderColors.SetAttribute("backgroundPressed", txtBackgroundPressed.Text);
+                appHeaderColors.SetAttribute("foregroundPressed", txtForegroundPressed.Text);
+                appHeaderColors.SetAttribute("backgroundSelected", txtBackgroundSelected.Text);
+                appHeaderColors.SetAttribute("foregroundSelected", txtForegroundSelected.Text);
+                customTheme.AppendChild(appHeaderColors);
+            }
             xmlTheme.AppendChild(customTheme);
             return xmlTheme;
         }
@@ -462,6 +412,7 @@ namespace ModernThemeCreator
         {
             if (dataGridView1.CurrentRow == null)
                 return;
+
             SetTextBoxValue(txtApp, 0);
             SetTextBoxValueWithColor(txtBasePaletteColor, 1);
             SetTextBoxValue(txtVibrancy, 2);
@@ -476,9 +427,22 @@ namespace ModernThemeCreator
             SetTextBoxValueWithColor(txtForegroundPressed, 11);
             SetTextBoxValueWithColor(txtBackgroundSelected, 12);
             SetTextBoxValueWithColor(txtForegroundSelected, 13);
+
             bool hasSelection = dataGridView1.SelectedRows.Count > 0;
             btn_editTheme.Enabled = hasSelection;
             btn_saveNew.Enabled = !hasSelection;
+
+            bool hasColorData = Enumerable.Range(5, 9) // columnas 5..13
+                .Where(i => i != 9) // excluye la columna 9
+                .Any(i => !string.IsNullOrWhiteSpace(
+                              dataGridView1.CurrentRow.Cells[i].FormattedValue?.ToString()));
+
+            if (hasColorData)
+            {
+                groupBoxHeaders.Show();
+            }
+            else { groupBoxHeaders.Hide(); }
+
         }
         private void SetTextBoxValue(TextBox textBox, int columnIndex)
         {
@@ -558,7 +522,7 @@ namespace ModernThemeCreator
             if (form2.ShowDialog() == DialogResult.OK)
             {
                 webResourceName = form2.webResourceName;
-                CheckEmptyColor();
+                //CheckEmptyColor();
                 XmlDocument xmlTheme = createXlm();
                 Guid webResourceId = ExecuteCreateThemeWebResource(xmlTheme, webResourceName);
                 if (appId != string.Empty)
@@ -712,5 +676,11 @@ namespace ModernThemeCreator
                 ApplyColor(tb);
             }
         }
+
+        private void ShowHeader_Click(object sender, EventArgs e)
+        {
+            groupBoxHeaders.Visible = !groupBoxHeaders.Visible;
+        }
+
     }
 }

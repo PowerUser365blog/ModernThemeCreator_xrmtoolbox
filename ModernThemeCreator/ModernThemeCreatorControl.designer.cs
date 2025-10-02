@@ -35,7 +35,8 @@
             this.btn_newTheme = new System.Windows.Forms.ToolStripButton();
             this.btn_editTheme = new System.Windows.Forms.ToolStripButton();
             this.btn_saveNew = new System.Windows.Forms.ToolStripButton();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBoxForm = new System.Windows.Forms.GroupBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.txtFont = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -45,34 +46,35 @@
             this.colorPicker9 = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.txtBasePaletteColor = new System.Windows.Forms.TextBox();
-            this.colorPicker8 = new System.Windows.Forms.Button();
-            this.colorPicker7 = new System.Windows.Forms.Button();
-            this.colorPicker6 = new System.Windows.Forms.Button();
-            this.colorPicker5 = new System.Windows.Forms.Button();
-            this.colorPicker4 = new System.Windows.Forms.Button();
-            this.colorPicker3 = new System.Windows.Forms.Button();
-            this.colorPicker2 = new System.Windows.Forms.Button();
-            this.lblForegroundSelected = new System.Windows.Forms.Label();
-            this.lblBackgroundSelected = new System.Windows.Forms.Label();
-            this.lblForegroundPressed = new System.Windows.Forms.Label();
-            this.lblBackgroundPressed = new System.Windows.Forms.Label();
             this.lblWR = new System.Windows.Forms.Label();
             this.txtName = new System.Windows.Forms.TextBox();
-            this.txtForegroundSelected = new System.Windows.Forms.TextBox();
-            this.txtBackgroundSelected = new System.Windows.Forms.TextBox();
-            this.txtForegroundPressed = new System.Windows.Forms.TextBox();
-            this.txtBackgroundPressed = new System.Windows.Forms.TextBox();
-            this.colorPicker1 = new System.Windows.Forms.Button();
-            this.txtForegroundHover = new System.Windows.Forms.TextBox();
-            this.lblForegroundHover = new System.Windows.Forms.Label();
-            this.txtBackgroundHover = new System.Windows.Forms.TextBox();
-            this.lblBackgroundHover = new System.Windows.Forms.Label();
-            this.txtForeground = new System.Windows.Forms.TextBox();
-            this.color2 = new System.Windows.Forms.Label();
-            this.backgroundLabel = new System.Windows.Forms.Label();
-            this.txtBackground = new System.Windows.Forms.TextBox();
             this.lblAppId = new System.Windows.Forms.Label();
             this.txtApp = new System.Windows.Forms.TextBox();
+            this.groupBoxHeaders = new System.Windows.Forms.GroupBox();
+            this.backgroundLabel = new System.Windows.Forms.Label();
+            this.txtBackground = new System.Windows.Forms.TextBox();
+            this.color2 = new System.Windows.Forms.Label();
+            this.txtForeground = new System.Windows.Forms.TextBox();
+            this.lblBackgroundHover = new System.Windows.Forms.Label();
+            this.txtBackgroundHover = new System.Windows.Forms.TextBox();
+            this.lblForegroundHover = new System.Windows.Forms.Label();
+            this.txtForegroundHover = new System.Windows.Forms.TextBox();
+            this.colorPicker1 = new System.Windows.Forms.Button();
+            this.txtBackgroundPressed = new System.Windows.Forms.TextBox();
+            this.colorPicker8 = new System.Windows.Forms.Button();
+            this.txtForegroundPressed = new System.Windows.Forms.TextBox();
+            this.colorPicker7 = new System.Windows.Forms.Button();
+            this.txtBackgroundSelected = new System.Windows.Forms.TextBox();
+            this.colorPicker6 = new System.Windows.Forms.Button();
+            this.txtForegroundSelected = new System.Windows.Forms.TextBox();
+            this.colorPicker5 = new System.Windows.Forms.Button();
+            this.lblBackgroundPressed = new System.Windows.Forms.Label();
+            this.colorPicker4 = new System.Windows.Forms.Button();
+            this.lblForegroundPressed = new System.Windows.Forms.Label();
+            this.colorPicker3 = new System.Windows.Forms.Button();
+            this.lblBackgroundSelected = new System.Windows.Forms.Label();
+            this.colorPicker2 = new System.Windows.Forms.Button();
+            this.lblForegroundSelected = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.appId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.basePaletteColor = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -92,7 +94,8 @@
             this.backgroundWorker = new System.ComponentModel.BackgroundWorker();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.toolStripMenu.SuspendLayout();
-            this.groupBox1.SuspendLayout();
+            this.groupBoxForm.SuspendLayout();
+            this.groupBoxHeaders.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -155,55 +158,43 @@
             this.btn_saveNew.ToolTipText = "Save New";
             this.btn_saveNew.Click += new System.EventHandler(this.btnSaveNew_Click);
             // 
-            // groupBox1
+            // groupBoxForm
             // 
-            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox1.AutoSize = true;
-            this.groupBox1.Controls.Add(this.label5);
-            this.groupBox1.Controls.Add(this.txtFont);
-            this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.txtHueTorsion);
-            this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.txtVibrancy);
-            this.groupBox1.Controls.Add(this.colorPicker9);
-            this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.txtBasePaletteColor);
-            this.groupBox1.Controls.Add(this.colorPicker8);
-            this.groupBox1.Controls.Add(this.colorPicker7);
-            this.groupBox1.Controls.Add(this.colorPicker6);
-            this.groupBox1.Controls.Add(this.colorPicker5);
-            this.groupBox1.Controls.Add(this.colorPicker4);
-            this.groupBox1.Controls.Add(this.colorPicker3);
-            this.groupBox1.Controls.Add(this.colorPicker2);
-            this.groupBox1.Controls.Add(this.lblForegroundSelected);
-            this.groupBox1.Controls.Add(this.lblBackgroundSelected);
-            this.groupBox1.Controls.Add(this.lblForegroundPressed);
-            this.groupBox1.Controls.Add(this.lblBackgroundPressed);
-            this.groupBox1.Controls.Add(this.lblWR);
-            this.groupBox1.Controls.Add(this.txtName);
-            this.groupBox1.Controls.Add(this.txtForegroundSelected);
-            this.groupBox1.Controls.Add(this.txtBackgroundSelected);
-            this.groupBox1.Controls.Add(this.txtForegroundPressed);
-            this.groupBox1.Controls.Add(this.txtBackgroundPressed);
-            this.groupBox1.Controls.Add(this.colorPicker1);
-            this.groupBox1.Controls.Add(this.txtForegroundHover);
-            this.groupBox1.Controls.Add(this.lblForegroundHover);
-            this.groupBox1.Controls.Add(this.txtBackgroundHover);
-            this.groupBox1.Controls.Add(this.lblBackgroundHover);
-            this.groupBox1.Controls.Add(this.txtForeground);
-            this.groupBox1.Controls.Add(this.color2);
-            this.groupBox1.Controls.Add(this.backgroundLabel);
-            this.groupBox1.Controls.Add(this.txtBackground);
-            this.groupBox1.Controls.Add(this.lblAppId);
-            this.groupBox1.Controls.Add(this.txtApp);
-            this.groupBox1.Location = new System.Drawing.Point(726, 29);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox1.Size = new System.Drawing.Size(570, 614);
-            this.groupBox1.TabIndex = 6;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Form";
+            this.groupBoxForm.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBoxForm.AutoSize = true;
+            this.groupBoxForm.Controls.Add(this.button1);
+            this.groupBoxForm.Controls.Add(this.label5);
+            this.groupBoxForm.Controls.Add(this.txtFont);
+            this.groupBoxForm.Controls.Add(this.label4);
+            this.groupBoxForm.Controls.Add(this.txtHueTorsion);
+            this.groupBoxForm.Controls.Add(this.label3);
+            this.groupBoxForm.Controls.Add(this.txtVibrancy);
+            this.groupBoxForm.Controls.Add(this.colorPicker9);
+            this.groupBoxForm.Controls.Add(this.label2);
+            this.groupBoxForm.Controls.Add(this.txtBasePaletteColor);
+            this.groupBoxForm.Controls.Add(this.lblWR);
+            this.groupBoxForm.Controls.Add(this.txtName);
+            this.groupBoxForm.Controls.Add(this.lblAppId);
+            this.groupBoxForm.Controls.Add(this.txtApp);
+            this.groupBoxForm.Controls.Add(this.groupBoxHeaders);
+            this.groupBoxForm.Location = new System.Drawing.Point(726, 29);
+            this.groupBoxForm.Margin = new System.Windows.Forms.Padding(2);
+            this.groupBoxForm.Name = "groupBoxForm";
+            this.groupBoxForm.Padding = new System.Windows.Forms.Padding(2);
+            this.groupBoxForm.Size = new System.Drawing.Size(570, 631);
+            this.groupBoxForm.TabIndex = 6;
+            this.groupBoxForm.TabStop = false;
+            this.groupBoxForm.Text = "Form";
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(25, 258);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(163, 23);
+            this.button1.TabIndex = 47;
+            this.button1.Text = "Add color in App Headers";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.ShowHeader_Click);
             // 
             // label5
             // 
@@ -278,7 +269,7 @@
             this.colorPicker9.Size = new System.Drawing.Size(27, 29);
             this.colorPicker9.TabIndex = 40;
             this.colorPicker9.UseVisualStyleBackColor = true;
-            this.colorPicker9.Click += new System.EventHandler(this.colorPicker9_Click);
+            this.colorPicker9.Click += new System.EventHandler(this.ColorPicker_Click);
             // 
             // label2
             // 
@@ -301,142 +292,6 @@
             this.txtBasePaletteColor.Size = new System.Drawing.Size(266, 20);
             this.txtBasePaletteColor.TabIndex = 38;
             this.txtBasePaletteColor.TextChanged += new System.EventHandler(this.ColorTextBox_TextChanged);
-            // 
-            // colorPicker8
-            // 
-            this.colorPicker8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.colorPicker8.Image = ((System.Drawing.Image)(resources.GetObject("colorPicker8.Image")));
-            this.colorPicker8.Location = new System.Drawing.Point(414, 568);
-            this.colorPicker8.Margin = new System.Windows.Forms.Padding(2);
-            this.colorPicker8.Name = "colorPicker8";
-            this.colorPicker8.Size = new System.Drawing.Size(27, 29);
-            this.colorPicker8.TabIndex = 35;
-            this.colorPicker8.UseVisualStyleBackColor = true;
-            this.colorPicker8.Click += new System.EventHandler(this.colorPicker8_Click);
-            // 
-            // colorPicker7
-            // 
-            this.colorPicker7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.colorPicker7.Image = ((System.Drawing.Image)(resources.GetObject("colorPicker7.Image")));
-            this.colorPicker7.Location = new System.Drawing.Point(414, 526);
-            this.colorPicker7.Margin = new System.Windows.Forms.Padding(2);
-            this.colorPicker7.Name = "colorPicker7";
-            this.colorPicker7.Size = new System.Drawing.Size(27, 29);
-            this.colorPicker7.TabIndex = 34;
-            this.colorPicker7.UseVisualStyleBackColor = true;
-            this.colorPicker7.Click += new System.EventHandler(this.colorPicker7_Click);
-            // 
-            // colorPicker6
-            // 
-            this.colorPicker6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.colorPicker6.Image = ((System.Drawing.Image)(resources.GetObject("colorPicker6.Image")));
-            this.colorPicker6.Location = new System.Drawing.Point(414, 483);
-            this.colorPicker6.Margin = new System.Windows.Forms.Padding(2);
-            this.colorPicker6.Name = "colorPicker6";
-            this.colorPicker6.Size = new System.Drawing.Size(27, 29);
-            this.colorPicker6.TabIndex = 33;
-            this.colorPicker6.UseVisualStyleBackColor = true;
-            this.colorPicker6.Click += new System.EventHandler(this.colorPicker6_Click);
-            // 
-            // colorPicker5
-            // 
-            this.colorPicker5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.colorPicker5.Image = ((System.Drawing.Image)(resources.GetObject("colorPicker5.Image")));
-            this.colorPicker5.Location = new System.Drawing.Point(414, 441);
-            this.colorPicker5.Margin = new System.Windows.Forms.Padding(2);
-            this.colorPicker5.Name = "colorPicker5";
-            this.colorPicker5.Size = new System.Drawing.Size(27, 29);
-            this.colorPicker5.TabIndex = 32;
-            this.colorPicker5.UseVisualStyleBackColor = true;
-            this.colorPicker5.Click += new System.EventHandler(this.colorPicker5_Click);
-            // 
-            // colorPicker4
-            // 
-            this.colorPicker4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.colorPicker4.Image = ((System.Drawing.Image)(resources.GetObject("colorPicker4.Image")));
-            this.colorPicker4.Location = new System.Drawing.Point(414, 399);
-            this.colorPicker4.Margin = new System.Windows.Forms.Padding(2);
-            this.colorPicker4.Name = "colorPicker4";
-            this.colorPicker4.Size = new System.Drawing.Size(27, 29);
-            this.colorPicker4.TabIndex = 31;
-            this.colorPicker4.UseVisualStyleBackColor = true;
-            this.colorPicker4.Click += new System.EventHandler(this.colorPicker4_Click);
-            // 
-            // colorPicker3
-            // 
-            this.colorPicker3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.colorPicker3.Image = ((System.Drawing.Image)(resources.GetObject("colorPicker3.Image")));
-            this.colorPicker3.Location = new System.Drawing.Point(414, 356);
-            this.colorPicker3.Margin = new System.Windows.Forms.Padding(2);
-            this.colorPicker3.Name = "colorPicker3";
-            this.colorPicker3.Size = new System.Drawing.Size(27, 29);
-            this.colorPicker3.TabIndex = 30;
-            this.colorPicker3.UseVisualStyleBackColor = true;
-            this.colorPicker3.Click += new System.EventHandler(this.colorPicker3_Click);
-            // 
-            // colorPicker2
-            // 
-            this.colorPicker2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.colorPicker2.Image = ((System.Drawing.Image)(resources.GetObject("colorPicker2.Image")));
-            this.colorPicker2.Location = new System.Drawing.Point(414, 313);
-            this.colorPicker2.Margin = new System.Windows.Forms.Padding(2);
-            this.colorPicker2.Name = "colorPicker2";
-            this.colorPicker2.Size = new System.Drawing.Size(27, 29);
-            this.colorPicker2.TabIndex = 29;
-            this.colorPicker2.UseVisualStyleBackColor = true;
-            this.colorPicker2.Click += new System.EventHandler(this.colorPicker2_Click);
-            // 
-            // lblForegroundSelected
-            // 
-            this.lblForegroundSelected.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblForegroundSelected.AutoSize = true;
-            this.lblForegroundSelected.Location = new System.Drawing.Point(22, 577);
-            this.lblForegroundSelected.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblForegroundSelected.Name = "lblForegroundSelected";
-            this.lblForegroundSelected.Size = new System.Drawing.Size(106, 13);
-            this.lblForegroundSelected.TabIndex = 28;
-            this.lblForegroundSelected.Text = "Foreground Selected";
-            // 
-            // lblBackgroundSelected
-            // 
-            this.lblBackgroundSelected.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblBackgroundSelected.AutoSize = true;
-            this.lblBackgroundSelected.Location = new System.Drawing.Point(22, 535);
-            this.lblBackgroundSelected.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblBackgroundSelected.Name = "lblBackgroundSelected";
-            this.lblBackgroundSelected.Size = new System.Drawing.Size(110, 13);
-            this.lblBackgroundSelected.TabIndex = 27;
-            this.lblBackgroundSelected.Text = "Background Selected";
-            // 
-            // lblForegroundPressed
-            // 
-            this.lblForegroundPressed.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblForegroundPressed.AutoSize = true;
-            this.lblForegroundPressed.Location = new System.Drawing.Point(22, 493);
-            this.lblForegroundPressed.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblForegroundPressed.Name = "lblForegroundPressed";
-            this.lblForegroundPressed.Size = new System.Drawing.Size(102, 13);
-            this.lblForegroundPressed.TabIndex = 26;
-            this.lblForegroundPressed.Text = "Foreground Pressed";
-            // 
-            // lblBackgroundPressed
-            // 
-            this.lblBackgroundPressed.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblBackgroundPressed.AutoSize = true;
-            this.lblBackgroundPressed.Location = new System.Drawing.Point(22, 451);
-            this.lblBackgroundPressed.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblBackgroundPressed.Name = "lblBackgroundPressed";
-            this.lblBackgroundPressed.Size = new System.Drawing.Size(106, 13);
-            this.lblBackgroundPressed.TabIndex = 25;
-            this.lblBackgroundPressed.Text = "Background Pressed";
             // 
             // lblWR
             // 
@@ -464,163 +319,6 @@
             this.txtName.Size = new System.Drawing.Size(308, 20);
             this.txtName.TabIndex = 20;
             // 
-            // txtForegroundSelected
-            // 
-            this.txtForegroundSelected.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtForegroundSelected.Location = new System.Drawing.Point(134, 574);
-            this.txtForegroundSelected.Margin = new System.Windows.Forms.Padding(2);
-            this.txtForegroundSelected.Name = "txtForegroundSelected";
-            this.txtForegroundSelected.Size = new System.Drawing.Size(266, 20);
-            this.txtForegroundSelected.TabIndex = 19;
-            this.txtForegroundSelected.TextChanged += new System.EventHandler(this.ColorTextBox_TextChanged);
-            // 
-            // txtBackgroundSelected
-            // 
-            this.txtBackgroundSelected.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtBackgroundSelected.Location = new System.Drawing.Point(134, 533);
-            this.txtBackgroundSelected.Margin = new System.Windows.Forms.Padding(2);
-            this.txtBackgroundSelected.Name = "txtBackgroundSelected";
-            this.txtBackgroundSelected.Size = new System.Drawing.Size(266, 20);
-            this.txtBackgroundSelected.TabIndex = 18;
-            this.txtBackgroundSelected.TextChanged += new System.EventHandler(this.ColorTextBox_TextChanged);
-            // 
-            // txtForegroundPressed
-            // 
-            this.txtForegroundPressed.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtForegroundPressed.Location = new System.Drawing.Point(134, 490);
-            this.txtForegroundPressed.Margin = new System.Windows.Forms.Padding(2);
-            this.txtForegroundPressed.Name = "txtForegroundPressed";
-            this.txtForegroundPressed.Size = new System.Drawing.Size(266, 20);
-            this.txtForegroundPressed.TabIndex = 17;
-            this.txtForegroundPressed.TextChanged += new System.EventHandler(this.ColorTextBox_TextChanged);
-            // 
-            // txtBackgroundPressed
-            // 
-            this.txtBackgroundPressed.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtBackgroundPressed.Location = new System.Drawing.Point(134, 447);
-            this.txtBackgroundPressed.Margin = new System.Windows.Forms.Padding(2);
-            this.txtBackgroundPressed.Name = "txtBackgroundPressed";
-            this.txtBackgroundPressed.Size = new System.Drawing.Size(266, 20);
-            this.txtBackgroundPressed.TabIndex = 16;
-            this.txtBackgroundPressed.TextChanged += new System.EventHandler(this.ColorTextBox_TextChanged);
-            // 
-            // colorPicker1
-            // 
-            this.colorPicker1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.colorPicker1.Image = ((System.Drawing.Image)(resources.GetObject("colorPicker1.Image")));
-            this.colorPicker1.Location = new System.Drawing.Point(414, 273);
-            this.colorPicker1.Margin = new System.Windows.Forms.Padding(2);
-            this.colorPicker1.Name = "colorPicker1";
-            this.colorPicker1.Size = new System.Drawing.Size(27, 29);
-            this.colorPicker1.TabIndex = 10;
-            this.colorPicker1.UseVisualStyleBackColor = true;
-            this.colorPicker1.Click += new System.EventHandler(this.colorPicker1_Click);
-            // 
-            // txtForegroundHover
-            // 
-            this.txtForegroundHover.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtForegroundHover.Location = new System.Drawing.Point(134, 404);
-            this.txtForegroundHover.Margin = new System.Windows.Forms.Padding(2);
-            this.txtForegroundHover.Name = "txtForegroundHover";
-            this.txtForegroundHover.Size = new System.Drawing.Size(266, 20);
-            this.txtForegroundHover.TabIndex = 9;
-            this.txtForegroundHover.TextChanged += new System.EventHandler(this.ColorTextBox_TextChanged);
-            // 
-            // lblForegroundHover
-            // 
-            this.lblForegroundHover.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblForegroundHover.AutoSize = true;
-            this.lblForegroundHover.Location = new System.Drawing.Point(22, 408);
-            this.lblForegroundHover.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblForegroundHover.Name = "lblForegroundHover";
-            this.lblForegroundHover.Size = new System.Drawing.Size(93, 13);
-            this.lblForegroundHover.TabIndex = 8;
-            this.lblForegroundHover.Text = "Foreground Hover";
-            // 
-            // txtBackgroundHover
-            // 
-            this.txtBackgroundHover.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtBackgroundHover.Location = new System.Drawing.Point(134, 362);
-            this.txtBackgroundHover.Margin = new System.Windows.Forms.Padding(2);
-            this.txtBackgroundHover.Name = "txtBackgroundHover";
-            this.txtBackgroundHover.Size = new System.Drawing.Size(266, 20);
-            this.txtBackgroundHover.TabIndex = 7;
-            this.txtBackgroundHover.TextChanged += new System.EventHandler(this.ColorTextBox_TextChanged);
-            // 
-            // lblBackgroundHover
-            // 
-            this.lblBackgroundHover.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblBackgroundHover.AutoSize = true;
-            this.lblBackgroundHover.Location = new System.Drawing.Point(22, 366);
-            this.lblBackgroundHover.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblBackgroundHover.Name = "lblBackgroundHover";
-            this.lblBackgroundHover.Size = new System.Drawing.Size(97, 13);
-            this.lblBackgroundHover.TabIndex = 6;
-            this.lblBackgroundHover.Text = "Background Hover";
-            // 
-            // txtForeground
-            // 
-            this.txtForeground.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtForeground.Location = new System.Drawing.Point(134, 319);
-            this.txtForeground.Margin = new System.Windows.Forms.Padding(2);
-            this.txtForeground.Name = "txtForeground";
-            this.txtForeground.Size = new System.Drawing.Size(266, 20);
-            this.txtForeground.TabIndex = 5;
-            this.txtForeground.TextChanged += new System.EventHandler(this.ColorTextBox_TextChanged);
-            // 
-            // color2
-            // 
-            this.color2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.color2.AutoSize = true;
-            this.color2.Location = new System.Drawing.Point(22, 324);
-            this.color2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.color2.Name = "color2";
-            this.color2.Size = new System.Drawing.Size(61, 13);
-            this.color2.TabIndex = 4;
-            this.color2.Text = "Foreground";
-            // 
-            // backgroundLabel
-            // 
-            this.backgroundLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.backgroundLabel.AutoSize = true;
-            this.backgroundLabel.Location = new System.Drawing.Point(22, 282);
-            this.backgroundLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.backgroundLabel.Name = "backgroundLabel";
-            this.backgroundLabel.Size = new System.Drawing.Size(65, 13);
-            this.backgroundLabel.TabIndex = 3;
-            this.backgroundLabel.Text = "Background";
-            // 
-            // txtBackground
-            // 
-            this.txtBackground.Location = new System.Drawing.Point(134, 278);
-            this.txtBackground.Margin = new System.Windows.Forms.Padding(2);
-            this.txtBackground.Name = "txtBackground";
-            this.txtBackground.Size = new System.Drawing.Size(266, 20);
-            this.txtBackground.TabIndex = 2;
-            this.txtBackground.TextChanged += new System.EventHandler(this.ColorTextBox_TextChanged);
-            // 
             // lblAppId
             // 
             this.lblAppId.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -644,6 +342,331 @@
             this.txtApp.Name = "txtApp";
             this.txtApp.Size = new System.Drawing.Size(308, 20);
             this.txtApp.TabIndex = 0;
+            // 
+            // groupBoxHeaders
+            // 
+            this.groupBoxHeaders.Controls.Add(this.backgroundLabel);
+            this.groupBoxHeaders.Controls.Add(this.txtBackground);
+            this.groupBoxHeaders.Controls.Add(this.color2);
+            this.groupBoxHeaders.Controls.Add(this.txtForeground);
+            this.groupBoxHeaders.Controls.Add(this.lblBackgroundHover);
+            this.groupBoxHeaders.Controls.Add(this.txtBackgroundHover);
+            this.groupBoxHeaders.Controls.Add(this.lblForegroundHover);
+            this.groupBoxHeaders.Controls.Add(this.txtForegroundHover);
+            this.groupBoxHeaders.Controls.Add(this.colorPicker1);
+            this.groupBoxHeaders.Controls.Add(this.txtBackgroundPressed);
+            this.groupBoxHeaders.Controls.Add(this.colorPicker8);
+            this.groupBoxHeaders.Controls.Add(this.txtForegroundPressed);
+            this.groupBoxHeaders.Controls.Add(this.colorPicker7);
+            this.groupBoxHeaders.Controls.Add(this.txtBackgroundSelected);
+            this.groupBoxHeaders.Controls.Add(this.colorPicker6);
+            this.groupBoxHeaders.Controls.Add(this.txtForegroundSelected);
+            this.groupBoxHeaders.Controls.Add(this.colorPicker5);
+            this.groupBoxHeaders.Controls.Add(this.lblBackgroundPressed);
+            this.groupBoxHeaders.Controls.Add(this.colorPicker4);
+            this.groupBoxHeaders.Controls.Add(this.lblForegroundPressed);
+            this.groupBoxHeaders.Controls.Add(this.colorPicker3);
+            this.groupBoxHeaders.Controls.Add(this.lblBackgroundSelected);
+            this.groupBoxHeaders.Controls.Add(this.colorPicker2);
+            this.groupBoxHeaders.Controls.Add(this.lblForegroundSelected);
+            this.groupBoxHeaders.Location = new System.Drawing.Point(25, 287);
+            this.groupBoxHeaders.Name = "groupBoxHeaders";
+            this.groupBoxHeaders.Size = new System.Drawing.Size(457, 326);
+            this.groupBoxHeaders.TabIndex = 48;
+            this.groupBoxHeaders.TabStop = false;
+            // 
+            // backgroundLabel
+            // 
+            this.backgroundLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.backgroundLabel.AutoSize = true;
+            this.backgroundLabel.Location = new System.Drawing.Point(17, 16);
+            this.backgroundLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.backgroundLabel.Name = "backgroundLabel";
+            this.backgroundLabel.Size = new System.Drawing.Size(65, 13);
+            this.backgroundLabel.TabIndex = 3;
+            this.backgroundLabel.Text = "Background";
+            // 
+            // txtBackground
+            // 
+            this.txtBackground.Location = new System.Drawing.Point(129, 12);
+            this.txtBackground.Margin = new System.Windows.Forms.Padding(2);
+            this.txtBackground.Name = "txtBackground";
+            this.txtBackground.Size = new System.Drawing.Size(266, 20);
+            this.txtBackground.TabIndex = 2;
+            this.txtBackground.TextChanged += new System.EventHandler(this.ColorTextBox_TextChanged);
+            // 
+            // color2
+            // 
+            this.color2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.color2.AutoSize = true;
+            this.color2.Location = new System.Drawing.Point(17, 56);
+            this.color2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.color2.Name = "color2";
+            this.color2.Size = new System.Drawing.Size(61, 13);
+            this.color2.TabIndex = 4;
+            this.color2.Text = "Foreground";
+            // 
+            // txtForeground
+            // 
+            this.txtForeground.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtForeground.Location = new System.Drawing.Point(129, 51);
+            this.txtForeground.Margin = new System.Windows.Forms.Padding(2);
+            this.txtForeground.Name = "txtForeground";
+            this.txtForeground.Size = new System.Drawing.Size(266, 20);
+            this.txtForeground.TabIndex = 5;
+            this.txtForeground.TextChanged += new System.EventHandler(this.ColorTextBox_TextChanged);
+            // 
+            // lblBackgroundHover
+            // 
+            this.lblBackgroundHover.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblBackgroundHover.AutoSize = true;
+            this.lblBackgroundHover.Location = new System.Drawing.Point(17, 94);
+            this.lblBackgroundHover.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblBackgroundHover.Name = "lblBackgroundHover";
+            this.lblBackgroundHover.Size = new System.Drawing.Size(97, 13);
+            this.lblBackgroundHover.TabIndex = 6;
+            this.lblBackgroundHover.Text = "Background Hover";
+            // 
+            // txtBackgroundHover
+            // 
+            this.txtBackgroundHover.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtBackgroundHover.Location = new System.Drawing.Point(129, 90);
+            this.txtBackgroundHover.Margin = new System.Windows.Forms.Padding(2);
+            this.txtBackgroundHover.Name = "txtBackgroundHover";
+            this.txtBackgroundHover.Size = new System.Drawing.Size(266, 20);
+            this.txtBackgroundHover.TabIndex = 7;
+            this.txtBackgroundHover.TextChanged += new System.EventHandler(this.ColorTextBox_TextChanged);
+            // 
+            // lblForegroundHover
+            // 
+            this.lblForegroundHover.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblForegroundHover.AutoSize = true;
+            this.lblForegroundHover.Location = new System.Drawing.Point(17, 131);
+            this.lblForegroundHover.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblForegroundHover.Name = "lblForegroundHover";
+            this.lblForegroundHover.Size = new System.Drawing.Size(93, 13);
+            this.lblForegroundHover.TabIndex = 8;
+            this.lblForegroundHover.Text = "Foreground Hover";
+            // 
+            // txtForegroundHover
+            // 
+            this.txtForegroundHover.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtForegroundHover.Location = new System.Drawing.Point(129, 127);
+            this.txtForegroundHover.Margin = new System.Windows.Forms.Padding(2);
+            this.txtForegroundHover.Name = "txtForegroundHover";
+            this.txtForegroundHover.Size = new System.Drawing.Size(266, 20);
+            this.txtForegroundHover.TabIndex = 9;
+            this.txtForegroundHover.TextChanged += new System.EventHandler(this.ColorTextBox_TextChanged);
+            // 
+            // colorPicker1
+            // 
+            this.colorPicker1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.colorPicker1.Image = ((System.Drawing.Image)(resources.GetObject("colorPicker1.Image")));
+            this.colorPicker1.Location = new System.Drawing.Point(409, 7);
+            this.colorPicker1.Margin = new System.Windows.Forms.Padding(2);
+            this.colorPicker1.Name = "colorPicker1";
+            this.colorPicker1.Size = new System.Drawing.Size(27, 29);
+            this.colorPicker1.TabIndex = 10;
+            this.colorPicker1.UseVisualStyleBackColor = true;
+            this.colorPicker1.Click += new System.EventHandler(this.ColorPicker_Click);
+            // 
+            // txtBackgroundPressed
+            // 
+            this.txtBackgroundPressed.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtBackgroundPressed.Location = new System.Drawing.Point(129, 165);
+            this.txtBackgroundPressed.Margin = new System.Windows.Forms.Padding(2);
+            this.txtBackgroundPressed.Name = "txtBackgroundPressed";
+            this.txtBackgroundPressed.Size = new System.Drawing.Size(266, 20);
+            this.txtBackgroundPressed.TabIndex = 16;
+            this.txtBackgroundPressed.TextChanged += new System.EventHandler(this.ColorTextBox_TextChanged);
+            // 
+            // colorPicker8
+            // 
+            this.colorPicker8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.colorPicker8.Image = ((System.Drawing.Image)(resources.GetObject("colorPicker8.Image")));
+            this.colorPicker8.Location = new System.Drawing.Point(409, 276);
+            this.colorPicker8.Margin = new System.Windows.Forms.Padding(2);
+            this.colorPicker8.Name = "colorPicker8";
+            this.colorPicker8.Size = new System.Drawing.Size(27, 29);
+            this.colorPicker8.TabIndex = 35;
+            this.colorPicker8.UseVisualStyleBackColor = true;
+            this.colorPicker8.Click += new System.EventHandler(this.ColorPicker_Click);
+            // 
+            // txtForegroundPressed
+            // 
+            this.txtForegroundPressed.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtForegroundPressed.Location = new System.Drawing.Point(129, 205);
+            this.txtForegroundPressed.Margin = new System.Windows.Forms.Padding(2);
+            this.txtForegroundPressed.Name = "txtForegroundPressed";
+            this.txtForegroundPressed.Size = new System.Drawing.Size(266, 20);
+            this.txtForegroundPressed.TabIndex = 17;
+            this.txtForegroundPressed.TextChanged += new System.EventHandler(this.ColorTextBox_TextChanged);
+            // 
+            // colorPicker7
+            // 
+            this.colorPicker7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.colorPicker7.Image = ((System.Drawing.Image)(resources.GetObject("colorPicker7.Image")));
+            this.colorPicker7.Location = new System.Drawing.Point(409, 237);
+            this.colorPicker7.Margin = new System.Windows.Forms.Padding(2);
+            this.colorPicker7.Name = "colorPicker7";
+            this.colorPicker7.Size = new System.Drawing.Size(27, 29);
+            this.colorPicker7.TabIndex = 34;
+            this.colorPicker7.UseVisualStyleBackColor = true;
+            this.colorPicker7.Click += new System.EventHandler(this.ColorPicker_Click);
+            // 
+            // txtBackgroundSelected
+            // 
+            this.txtBackgroundSelected.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtBackgroundSelected.Location = new System.Drawing.Point(129, 244);
+            this.txtBackgroundSelected.Margin = new System.Windows.Forms.Padding(2);
+            this.txtBackgroundSelected.Name = "txtBackgroundSelected";
+            this.txtBackgroundSelected.Size = new System.Drawing.Size(266, 20);
+            this.txtBackgroundSelected.TabIndex = 18;
+            this.txtBackgroundSelected.TextChanged += new System.EventHandler(this.ColorTextBox_TextChanged);
+            // 
+            // colorPicker6
+            // 
+            this.colorPicker6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.colorPicker6.Image = ((System.Drawing.Image)(resources.GetObject("colorPicker6.Image")));
+            this.colorPicker6.Location = new System.Drawing.Point(409, 198);
+            this.colorPicker6.Margin = new System.Windows.Forms.Padding(2);
+            this.colorPicker6.Name = "colorPicker6";
+            this.colorPicker6.Size = new System.Drawing.Size(27, 29);
+            this.colorPicker6.TabIndex = 33;
+            this.colorPicker6.UseVisualStyleBackColor = true;
+            this.colorPicker6.Click += new System.EventHandler(this.ColorPicker_Click);
+            // 
+            // txtForegroundSelected
+            // 
+            this.txtForegroundSelected.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtForegroundSelected.Location = new System.Drawing.Point(129, 282);
+            this.txtForegroundSelected.Margin = new System.Windows.Forms.Padding(2);
+            this.txtForegroundSelected.Name = "txtForegroundSelected";
+            this.txtForegroundSelected.Size = new System.Drawing.Size(266, 20);
+            this.txtForegroundSelected.TabIndex = 19;
+            this.txtForegroundSelected.TextChanged += new System.EventHandler(this.ColorTextBox_TextChanged);
+            // 
+            // colorPicker5
+            // 
+            this.colorPicker5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.colorPicker5.Image = ((System.Drawing.Image)(resources.GetObject("colorPicker5.Image")));
+            this.colorPicker5.Location = new System.Drawing.Point(409, 159);
+            this.colorPicker5.Margin = new System.Windows.Forms.Padding(2);
+            this.colorPicker5.Name = "colorPicker5";
+            this.colorPicker5.Size = new System.Drawing.Size(27, 29);
+            this.colorPicker5.TabIndex = 32;
+            this.colorPicker5.UseVisualStyleBackColor = true;
+            this.colorPicker5.Click += new System.EventHandler(this.ColorPicker_Click);
+            // 
+            // lblBackgroundPressed
+            // 
+            this.lblBackgroundPressed.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblBackgroundPressed.AutoSize = true;
+            this.lblBackgroundPressed.Location = new System.Drawing.Point(17, 169);
+            this.lblBackgroundPressed.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblBackgroundPressed.Name = "lblBackgroundPressed";
+            this.lblBackgroundPressed.Size = new System.Drawing.Size(106, 13);
+            this.lblBackgroundPressed.TabIndex = 25;
+            this.lblBackgroundPressed.Text = "Background Pressed";
+            // 
+            // colorPicker4
+            // 
+            this.colorPicker4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.colorPicker4.Image = ((System.Drawing.Image)(resources.GetObject("colorPicker4.Image")));
+            this.colorPicker4.Location = new System.Drawing.Point(409, 122);
+            this.colorPicker4.Margin = new System.Windows.Forms.Padding(2);
+            this.colorPicker4.Name = "colorPicker4";
+            this.colorPicker4.Size = new System.Drawing.Size(27, 29);
+            this.colorPicker4.TabIndex = 31;
+            this.colorPicker4.UseVisualStyleBackColor = true;
+            this.colorPicker4.Click += new System.EventHandler(this.ColorPicker_Click);
+            // 
+            // lblForegroundPressed
+            // 
+            this.lblForegroundPressed.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblForegroundPressed.AutoSize = true;
+            this.lblForegroundPressed.Location = new System.Drawing.Point(17, 208);
+            this.lblForegroundPressed.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblForegroundPressed.Name = "lblForegroundPressed";
+            this.lblForegroundPressed.Size = new System.Drawing.Size(102, 13);
+            this.lblForegroundPressed.TabIndex = 26;
+            this.lblForegroundPressed.Text = "Foreground Pressed";
+            // 
+            // colorPicker3
+            // 
+            this.colorPicker3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.colorPicker3.Image = ((System.Drawing.Image)(resources.GetObject("colorPicker3.Image")));
+            this.colorPicker3.Location = new System.Drawing.Point(409, 84);
+            this.colorPicker3.Margin = new System.Windows.Forms.Padding(2);
+            this.colorPicker3.Name = "colorPicker3";
+            this.colorPicker3.Size = new System.Drawing.Size(27, 29);
+            this.colorPicker3.TabIndex = 30;
+            this.colorPicker3.UseVisualStyleBackColor = true;
+            this.colorPicker3.Click += new System.EventHandler(this.ColorPicker_Click);
+            // 
+            // lblBackgroundSelected
+            // 
+            this.lblBackgroundSelected.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblBackgroundSelected.AutoSize = true;
+            this.lblBackgroundSelected.Location = new System.Drawing.Point(17, 246);
+            this.lblBackgroundSelected.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblBackgroundSelected.Name = "lblBackgroundSelected";
+            this.lblBackgroundSelected.Size = new System.Drawing.Size(110, 13);
+            this.lblBackgroundSelected.TabIndex = 27;
+            this.lblBackgroundSelected.Text = "Background Selected";
+            // 
+            // colorPicker2
+            // 
+            this.colorPicker2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.colorPicker2.Image = ((System.Drawing.Image)(resources.GetObject("colorPicker2.Image")));
+            this.colorPicker2.Location = new System.Drawing.Point(409, 45);
+            this.colorPicker2.Margin = new System.Windows.Forms.Padding(2);
+            this.colorPicker2.Name = "colorPicker2";
+            this.colorPicker2.Size = new System.Drawing.Size(27, 29);
+            this.colorPicker2.TabIndex = 29;
+            this.colorPicker2.UseVisualStyleBackColor = true;
+            this.colorPicker2.Click += new System.EventHandler(this.ColorPicker_Click);
+            // 
+            // lblForegroundSelected
+            // 
+            this.lblForegroundSelected.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblForegroundSelected.AutoSize = true;
+            this.lblForegroundSelected.Location = new System.Drawing.Point(17, 285);
+            this.lblForegroundSelected.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblForegroundSelected.Name = "lblForegroundSelected";
+            this.lblForegroundSelected.Size = new System.Drawing.Size(106, 13);
+            this.lblForegroundSelected.TabIndex = 28;
+            this.lblForegroundSelected.Text = "Foreground Selected";
             // 
             // dataGridView1
             // 
@@ -675,7 +698,7 @@
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(679, 614);
+            this.dataGridView1.Size = new System.Drawing.Size(679, 632);
             this.dataGridView1.TabIndex = 5;
             this.dataGridView1.SelectionChanged += new System.EventHandler(this.dataGridView1_SelectionChanged);
             // 
@@ -787,16 +810,18 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.groupBoxForm);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.toolStripMenu);
             this.Name = "ModernThemeCreatorControl";
-            this.Size = new System.Drawing.Size(1322, 656);
+            this.Size = new System.Drawing.Size(1322, 678);
             this.Load += new System.EventHandler(this.MyPluginControl_Load);
             this.toolStripMenu.ResumeLayout(false);
             this.toolStripMenu.PerformLayout();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.groupBoxForm.ResumeLayout(false);
+            this.groupBoxForm.PerformLayout();
+            this.groupBoxHeaders.ResumeLayout(false);
+            this.groupBoxHeaders.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -807,7 +832,7 @@
         private System.Windows.Forms.ToolStrip toolStripMenu;
         private System.Windows.Forms.ToolStripButton tsbClose;
         private System.Windows.Forms.ToolStripSeparator tssSeparator1;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox groupBoxForm;
         private System.Windows.Forms.Button colorPicker8;
         private System.Windows.Forms.Button colorPicker7;
         private System.Windows.Forms.Button colorPicker6;
@@ -866,5 +891,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn foregroundPressed;
         private System.Windows.Forms.DataGridViewTextBoxColumn backgroundSelected;
         private System.Windows.Forms.DataGridViewTextBoxColumn foregroundSelected;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.GroupBox groupBoxHeaders;
     }
 }
