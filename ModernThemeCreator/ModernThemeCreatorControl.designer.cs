@@ -44,8 +44,8 @@
             this.label3 = new System.Windows.Forms.Label();
             this.txtVibrancy = new System.Windows.Forms.TextBox();
             this.colorPicker9 = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
             this.txtBasePaletteColor = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.lblWR = new System.Windows.Forms.Label();
             this.txtName = new System.Windows.Forms.TextBox();
             this.lblAppId = new System.Windows.Forms.Label();
@@ -268,8 +268,18 @@
             this.colorPicker9.Name = "colorPicker9";
             this.colorPicker9.Size = new System.Drawing.Size(27, 29);
             this.colorPicker9.TabIndex = 40;
+            this.colorPicker9.Tag = this.txtBasePaletteColor;
             this.colorPicker9.UseVisualStyleBackColor = true;
             this.colorPicker9.Click += new System.EventHandler(this.ColorPicker_Click);
+            // 
+            // txtBasePaletteColor
+            // 
+            this.txtBasePaletteColor.Location = new System.Drawing.Point(134, 107);
+            this.txtBasePaletteColor.Margin = new System.Windows.Forms.Padding(2);
+            this.txtBasePaletteColor.Name = "txtBasePaletteColor";
+            this.txtBasePaletteColor.Size = new System.Drawing.Size(266, 20);
+            this.txtBasePaletteColor.TabIndex = 38;
+            this.txtBasePaletteColor.TextChanged += new System.EventHandler(this.ColorTextBox_TextChanged);
             // 
             // label2
             // 
@@ -283,15 +293,6 @@
             this.label2.Size = new System.Drawing.Size(94, 13);
             this.label2.TabIndex = 39;
             this.label2.Text = "Base Palette Color";
-            // 
-            // txtBasePaletteColor
-            // 
-            this.txtBasePaletteColor.Location = new System.Drawing.Point(134, 107);
-            this.txtBasePaletteColor.Margin = new System.Windows.Forms.Padding(2);
-            this.txtBasePaletteColor.Name = "txtBasePaletteColor";
-            this.txtBasePaletteColor.Size = new System.Drawing.Size(266, 20);
-            this.txtBasePaletteColor.TabIndex = 38;
-            this.txtBasePaletteColor.TextChanged += new System.EventHandler(this.ColorTextBox_TextChanged);
             // 
             // lblWR
             // 
@@ -481,6 +482,7 @@
             this.colorPicker1.Name = "colorPicker1";
             this.colorPicker1.Size = new System.Drawing.Size(27, 29);
             this.colorPicker1.TabIndex = 10;
+            this.colorPicker1.Tag = txtBackground;
             this.colorPicker1.UseVisualStyleBackColor = true;
             this.colorPicker1.Click += new System.EventHandler(this.ColorPicker_Click);
             // 
@@ -505,6 +507,7 @@
             this.colorPicker8.Name = "colorPicker8";
             this.colorPicker8.Size = new System.Drawing.Size(27, 29);
             this.colorPicker8.TabIndex = 35;
+            this.colorPicker8.Tag = txtForegroundSelected;
             this.colorPicker8.UseVisualStyleBackColor = true;
             this.colorPicker8.Click += new System.EventHandler(this.ColorPicker_Click);
             // 
@@ -529,6 +532,7 @@
             this.colorPicker7.Name = "colorPicker7";
             this.colorPicker7.Size = new System.Drawing.Size(27, 29);
             this.colorPicker7.TabIndex = 34;
+            this.colorPicker7.Tag = txtBackgroundSelected;
             this.colorPicker7.UseVisualStyleBackColor = true;
             this.colorPicker7.Click += new System.EventHandler(this.ColorPicker_Click);
             // 
@@ -553,6 +557,7 @@
             this.colorPicker6.Name = "colorPicker6";
             this.colorPicker6.Size = new System.Drawing.Size(27, 29);
             this.colorPicker6.TabIndex = 33;
+            this.colorPicker6.Tag = txtForegroundPressed;
             this.colorPicker6.UseVisualStyleBackColor = true;
             this.colorPicker6.Click += new System.EventHandler(this.ColorPicker_Click);
             // 
@@ -577,6 +582,7 @@
             this.colorPicker5.Name = "colorPicker5";
             this.colorPicker5.Size = new System.Drawing.Size(27, 29);
             this.colorPicker5.TabIndex = 32;
+            this.colorPicker5.Tag = txtBackgroundPressed;
             this.colorPicker5.UseVisualStyleBackColor = true;
             this.colorPicker5.Click += new System.EventHandler(this.ColorPicker_Click);
             // 
@@ -602,6 +608,7 @@
             this.colorPicker4.Name = "colorPicker4";
             this.colorPicker4.Size = new System.Drawing.Size(27, 29);
             this.colorPicker4.TabIndex = 31;
+            this.colorPicker4.Tag = txtForegroundHover;
             this.colorPicker4.UseVisualStyleBackColor = true;
             this.colorPicker4.Click += new System.EventHandler(this.ColorPicker_Click);
             // 
@@ -627,6 +634,7 @@
             this.colorPicker3.Name = "colorPicker3";
             this.colorPicker3.Size = new System.Drawing.Size(27, 29);
             this.colorPicker3.TabIndex = 30;
+            this.colorPicker3.Tag = txtBackgroundHover;
             this.colorPicker3.UseVisualStyleBackColor = true;
             this.colorPicker3.Click += new System.EventHandler(this.ColorPicker_Click);
             // 
@@ -652,6 +660,7 @@
             this.colorPicker2.Name = "colorPicker2";
             this.colorPicker2.Size = new System.Drawing.Size(27, 29);
             this.colorPicker2.TabIndex = 29;
+            this.colorPicker2.Tag = txtForeground;
             this.colorPicker2.UseVisualStyleBackColor = true;
             this.colorPicker2.Click += new System.EventHandler(this.ColorPicker_Click);
             // 
