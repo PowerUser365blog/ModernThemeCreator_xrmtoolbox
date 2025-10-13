@@ -82,7 +82,7 @@ namespace ModernThemeCreator
             foreach (var setting in settings.Entities)
             {
                 Entity entity = new Entity("combinedsetting");
-                entity.Id = new Guid();
+                entity.Id = Guid.NewGuid();
                 entity["appid"] = setting.GetAttributeValue<EntityReference>("parentappmoduleid").Id;
                 entity["value"] = setting.GetAttributeValue<string>("value");
                 colorSettings.Entities.Add(entity);
@@ -91,7 +91,7 @@ namespace ModernThemeCreator
             foreach (var orgSetting in orgSettings.Entities)
             {
                 Entity entity = new Entity("combinedsetting");
-                entity.Id = new Guid();
+                entity.Id = Guid.NewGuid();
                 entity["appid"] = Guid.Empty;
                 entity["value"] = orgSetting.GetAttributeValue<string>("value");
                 colorSettings.Entities.Add(entity);
